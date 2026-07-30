@@ -6,6 +6,8 @@ Each microservice in this project follows the Onion Architecture pattern.
 Dependencies always point inward, toward the Domain layer, never the
 other way around.
 
+API → Infrastructure → Application → Domain
+
 ### Layer responsibilities
 
 | Layer | Responsibility | Depends on |
@@ -25,6 +27,12 @@ without any database.
 ## Current services
 
 ### Order Service
+
+src/Services/OrderService/
+├── OrderService.Domain
+├── OrderService.Application
+├── OrderService.Infrastructure
+└── OrderService.Api
 
 Reference project for the pattern. Delivery Service will replicate this
 exact structure once validated.
