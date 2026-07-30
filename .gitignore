@@ -1,0 +1,21 @@
+## .NET ##
+bin/
+obj/
+*.user
+.vs/
+*.suo
+
+## Docker ##
+*.env
+docker-compose.override.yml
+
+## Node / React ##
+node_modules/
+dist/
+build/
+.env.local
+
+## Éditeurs / OS ##
+.idea/
+.DS_Store
+Thumbs.db
