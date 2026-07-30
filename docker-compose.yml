@@ -1,0 +1,16 @@
+services:
+  orderservice-db:
+    image: postgres:17.2
+    container_name: orderservice-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${ORDERSERVICE_DB_NAME}
+      POSTGRES_USER: ${ORDERSERVICE_DB_USER}
+      POSTGRES_PASSWORD: ${ORDERSERVICE_DB_PASSWORD}
+    ports:
+      - "${ORDERSERVICE_DB_PORT}:5432"
+    volumes:
+      - orderservice-db-data:/var/lib/postgresql/data
+
+volumes:
+  orderservice-db-data:

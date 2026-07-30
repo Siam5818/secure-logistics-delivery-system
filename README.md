@@ -30,3 +30,38 @@ This project enforces consistent code style and quality via:
 All warnings are treated as build errors. A failing build due to a code
 analysis warning is expected behavior, not a bug — fix the warning rather
 than suppressing it unless there is a documented justification.
+
+## Local Infrastructure
+
+This project uses Docker Compose to run required infrastructure locally.
+
+### Prerequisites
+Copy the example environment file and adjust values as needed:
+
+\`\`\`powershell
+Copy-Item .env.example .env
+\`\`\`
+
+### Start infrastructure
+
+\`\`\`powershell
+docker compose up -d
+\`\`\`
+
+### Verify Order Service database is running
+
+\`\`\`powershell
+docker compose ps
+\`\`\`
+
+### Stop infrastructure
+
+\`\`\`powershell
+docker compose down
+\`\`\`
+
+To also remove persisted data volumes:
+
+\`\`\`powershell
+docker compose down -v
+\`\`\`
