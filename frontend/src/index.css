@@ -1,0 +1,134 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    background: #0f172a;
+    color: #e2e8f0;
+}
+
+.app-container {
+    max-width: 960px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.error {
+    color: #f87171;
+    margin-bottom: 1rem;
+}
+
+.empty-state {
+    color: #64748b;
+    font-style: italic;
+}
+
+@media (max-width: 700px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: #f8fafc;
+}
+
+h2 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 1.5rem 0 1rem;
+    color: #f8fafc;
+}
+
+h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1.25rem 0 0.5rem;
+    color: #cbd5e1;
+}
+
+section {
+    background: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+input {
+    display: block;
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    margin-bottom: 0.6rem;
+    background: #0f172a;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    color: #e2e8f0;
+    font-size: 0.9rem;
+}
+
+    input:focus {
+        outline: none;
+        border-color: #6366f1;
+    }
+
+button {
+    padding: 0.6rem 1.2rem;
+    background: #6366f1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: 0.5rem;
+}
+
+    button:hover {
+        background: #4f46e5;
+    }
+
+    button:disabled {
+        background: #475569;
+        cursor: not-allowed;
+    }
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    padding: 0.6rem 0.8rem;
+    background: #0f172a;
+    border-radius: 8px;
+    margin-bottom: 0.4rem;
+    font-size: 0.9rem;
+}
+
+strong {
+    color: #818cf8;
+}
+.status-paid {
+    color: #4ade80;
+}
+
+.status-created {
+    color: #fbbf24;
+}
+
+.status-cancelled {
+    color: #f87171;
+}

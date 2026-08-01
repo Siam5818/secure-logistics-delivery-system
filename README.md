@@ -104,3 +104,21 @@ All client traffic goes through the API Gateway (YARP) at
 http://localhost:5007 (dev) — routes /api/orders/** and /api/auth/**
 to Order Service. Dockerization of the Gateway is defined in
 docker-compose.yml but not yet fully tested in-container (technical debt).
+
+## Project Structure
+
+- `src/` — backend (.NET): Order Service (Onion Architecture) + API Gateway
+- `frontend/` — React (Vite + TypeScript) client consuming the API Gateway
+
+## Frontend
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Runs on http://localhost:5173. Requires the API Gateway (port 5007) and
+Order Service (port 5114) running in parallel. The frontend is a single
+merged module (no separate Client/Driver apps), per the MVP scope
+defined in the product vision.
