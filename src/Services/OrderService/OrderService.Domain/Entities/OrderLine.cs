@@ -9,6 +9,12 @@ public sealed class OrderLine
     public int Quantity { get; private set; }
     public Money UnitPrice { get; }
 
+    private OrderLine()
+    {
+        ProductName = null!;
+        UnitPrice = null!;
+    }
+
     internal OrderLine(string productName, int quantity, Money unitPrice)
     {
         if (string.IsNullOrWhiteSpace(productName))

@@ -74,3 +74,13 @@ Business invariants are enforced through private setters and explicit
 methods (e.g. `Order.MarkAsShipped()`), never through public property
 mutation. Run `dotnet test src/Services/OrderService/OrderService.Domain.Tests`
 to validate all invariants.
+
+## Persistence
+
+Order Service uses EF Core with PostgreSQL (Npgsql provider). Entity
+identifiers are generated in the Domain layer (not by the database),
+requiring explicit `ValueGeneratedNever()` configuration. Apply migrations:
+
+\`\`\`powershell
+dotnet ef database update --project src/Services/OrderService/OrderService.Infrastructure --startup-project src/Services/OrderService/OrderService.Api
+\`\`\`

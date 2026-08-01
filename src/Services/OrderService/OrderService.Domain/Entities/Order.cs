@@ -16,6 +16,12 @@ public sealed class Order
         .Select(l => l.LineTotal)
         .Aggregate(Money.Zero(_currency), (acc, line) => acc.Add(line));
 
+    private Order()
+    {
+        ShippingAddress = null!;
+        _currency = null!;
+    }
+
     public Order(Address shippingAddress, string currency)
     {
         Id = Guid.NewGuid();
