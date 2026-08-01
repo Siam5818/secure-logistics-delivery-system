@@ -5,6 +5,8 @@ using OrderService.Application.UseCases;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using MassTransit;
+using OrderService.Api.Consumers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -43,6 +45,23 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     });
 
 builder.Services.AddAuthorization();
+
+// onfuguration de MassTransit
+builder.Services.AddMassTransit(x =>
+{
+    x.AddConsumer<OrderPaidConsumer>();
+
+    x.UsingRabbitMq((context, cfg) =>
+    {
+        cfg.Host("localhost", "/", h =>
+        {
+            h.Username("guest");
+            h.Password("guest");
+        });
+
+        cfg.ConfigureEndpoints(context);
+    });
+});
 
 var app = builder.Build();
 

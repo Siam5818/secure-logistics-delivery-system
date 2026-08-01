@@ -91,3 +91,9 @@ Order Service uses simple JWT authentication (see ADR-002 for context —
 Keycloak integration was attempted but reverted after exceeding its
 time-box). Obtain a test token via `POST /api/Auth/token` with a
 `username`, then use it as a Bearer token on protected endpoints.
+
+## Event-driven messaging
+
+Order Service publishes `OrderPaidEvent` via MassTransit/RabbitMQ when
+an order is marked as paid. RabbitMQ Management UI: http://localhost:15672
+(guest/guest). MassTransit is pinned to 8.3.4 (pre-license v9 change).

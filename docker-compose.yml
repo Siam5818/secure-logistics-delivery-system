@@ -25,6 +25,17 @@ services:
     volumes:
       - keycloak-data:/opt/keycloak/data
 
+  rabbitmq:
+    image: rabbitmq:4.0-management
+    container_name: slds-rabbitmq
+    restart: unless-stopped
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+
 volumes:
   orderservice-db-data:
   keycloak-data:
+  rabbitmq-data:
