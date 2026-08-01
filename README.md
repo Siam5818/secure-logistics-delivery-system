@@ -65,3 +65,12 @@ To also remove persisted data volumes:
 \`\`\`powershell
 docker compose down -v
 \`\`\`
+
+## Domain Model
+
+Order Service's domain model (`OrderService.Domain`) implements Order as
+an Aggregate Root with OrderLine entities and Money/Address value objects.
+Business invariants are enforced through private setters and explicit
+methods (e.g. `Order.MarkAsShipped()`), never through public property
+mutation. Run `dotnet test src/Services/OrderService/OrderService.Domain.Tests`
+to validate all invariants.
