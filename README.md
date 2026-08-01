@@ -97,3 +97,10 @@ time-box). Obtain a test token via `POST /api/Auth/token` with a
 Order Service publishes `OrderPaidEvent` via MassTransit/RabbitMQ when
 an order is marked as paid. RabbitMQ Management UI: http://localhost:15672
 (guest/guest). MassTransit is pinned to 8.3.4 (pre-license v9 change).
+
+## API Gateway
+
+All client traffic goes through the API Gateway (YARP) at
+http://localhost:5007 (dev) — routes /api/orders/** and /api/auth/**
+to Order Service. Dockerization of the Gateway is defined in
+docker-compose.yml but not yet fully tested in-container (technical debt).
