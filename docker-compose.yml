@@ -35,6 +35,17 @@ services:
     volumes:
       - rabbitmq-data:/var/lib/rabbitmq
 
+  api-gateway:
+    build:
+      context: ./src
+      dockerfile: Gateway/ApiGateway/Dockerfile
+    container_name: slds-api-gateway
+    restart: unless-stopped
+    ports:
+      - "5000:8080"
+    depends_on:
+      - orderservice-db
+
 volumes:
   orderservice-db-data:
   keycloak-data:
