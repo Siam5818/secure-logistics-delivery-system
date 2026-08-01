@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using OrderService.Application.UseCases;
+using Microsoft.AspNetCore.Authorization;
 
 namespace OrderService.Api.Controllers;
 
@@ -24,6 +25,7 @@ public sealed class OrdersController : ControllerBase
         _getOrderById = getOrderById;
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> Create(CreateOrderRequest request, CancellationToken cancellationToken)
     {
