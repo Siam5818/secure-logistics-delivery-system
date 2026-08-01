@@ -84,3 +84,10 @@ requiring explicit `ValueGeneratedNever()` configuration. Apply migrations:
 \`\`\`powershell
 dotnet ef database update --project src/Services/OrderService/OrderService.Infrastructure --startup-project src/Services/OrderService/OrderService.Api
 \`\`\`
+
+## Authentication
+
+Order Service uses simple JWT authentication (see ADR-002 for context —
+Keycloak integration was attempted but reverted after exceeding its
+time-box). Obtain a test token via `POST /api/Auth/token` with a
+`username`, then use it as a Bearer token on protected endpoints.
