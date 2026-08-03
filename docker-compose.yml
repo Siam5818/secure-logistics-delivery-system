@@ -12,6 +12,19 @@ services:
     volumes:
       - orderservice-db-data:/var/lib/postgresql/data
 
+  deliveryservice-db:
+    image: postgres:17.2
+    container_name: deliveryservice-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: deliveryservice_db
+      POSTGRES_USER: deliveryservice_user
+      POSTGRES_PASSWORD: passer
+    ports:
+      - "5436:5432"
+    volumes:
+      - deliveryservice-db-data:/var/lib/postgresql/data
+
   keycloak:
     image: quay.io/keycloak/keycloak:26.0
     container_name: slds-keycloak
@@ -48,5 +61,6 @@ services:
 
 volumes:
   orderservice-db-data:
+  deliveryservice-db-data:
   keycloak-data:
   rabbitmq-data:

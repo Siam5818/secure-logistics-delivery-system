@@ -122,3 +122,12 @@ Runs on http://localhost:5173. Requires the API Gateway (port 5007) and
 Order Service (port 5114) running in parallel. The frontend is a single
 merged module (no separate Client/Driver apps), per the MVP scope
 defined in the product vision.
+
+## Delivery Service
+
+Second microservice, replicating the Onion Architecture pattern from
+Order Service with a reduced scope (no dedicated auth, no Gateway route
+yet). Listens to `OrderPaidEvent` (via Shared.Contracts) and automatically
+creates a Delivery record. Runs on port 5080.
+
+Check a delivery: `GET http://localhost:5080/api/Deliveries/{orderId}`
