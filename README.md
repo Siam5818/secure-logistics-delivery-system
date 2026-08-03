@@ -131,3 +131,13 @@ yet). Listens to `OrderPaidEvent` (via Shared.Contracts) and automatically
 creates a Delivery record. Runs on port 5080.
 
 Check a delivery: `GET http://localhost:5080/api/Deliveries/{orderId}`
+
+## Continuous Integration
+
+A GitHub Actions pipeline (`.github/workflows/ci.yml`) runs restore,
+build, and tests on every Pull Request targeting `develop` or `main`.
+
+**Known limitation**: execution could not be verified live during
+development due to a GitHub Actions billing issue unrelated to this
+project (account-level payment processing). The workflow file is
+syntactically valid and ready to run once billing is resolved.
