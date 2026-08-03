@@ -14,7 +14,7 @@ public sealed class AuthController : ControllerBase
 
     public AuthController(IConfiguration configuration) => _configuration = configuration;
 
-    public sealed record TokenRequest(string Username);
+    public sealed record TokenRequest(string Username, string Role = "Customer");
 
     [HttpPost("token")]
     public IActionResult GenerateToken(TokenRequest request)
@@ -23,7 +23,11 @@ public sealed class AuthController : ControllerBase
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
         var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-        var claims = new[] { new Claim(ClaimTypes.Name, request.Username) };
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.Name, request.Username),
+            new Claim(ClaimTypes.Role, request.Role)
+        };
 
         var token = new JwtSecurityToken(
             issuer: "OrderService.Api",

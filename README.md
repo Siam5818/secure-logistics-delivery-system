@@ -151,3 +151,10 @@ syntactically valid and ready to run once billing is resolved.
 
 Returns `Healthy` (200) when the database is reachable, `Unhealthy`
 (503) otherwise.
+
+## RBAC (Role-Based Access Control)
+
+`POST /api/Auth/token` accepts an optional `role` field (defaults to
+`Customer`). `DELETE /api/Orders/{id}` is restricted to `Admin` role
+(demo endpoint — deletion logic not implemented, illustrates the RBAC
+mechanism only).
