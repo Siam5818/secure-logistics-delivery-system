@@ -7,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using MassTransit;
 using OrderService.Api.Consumers;
+using HealthChecks.NpgSql;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -63,6 +64,9 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("OrderServiceDb")!, name: "orderservice-db");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -76,6 +80,8 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapHealthChecks("/health");
 
 app.MapControllers();
 

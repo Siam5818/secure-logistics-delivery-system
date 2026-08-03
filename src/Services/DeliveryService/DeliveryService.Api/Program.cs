@@ -4,6 +4,7 @@ using DeliveryService.Application.Interfaces;
 using DeliveryService.Application.UseCases;
 using DeliveryService.Infrastructure.Persistence;
 using DeliveryService.Api.Consumers;
+using HealthChecks.NpgSql;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +36,9 @@ builder.Services.AddMassTransit(x =>
     });
 });
 
+builder.Services.AddHealthChecks()
+    .AddNpgSql(builder.Configuration.GetConnectionString("DeliveryServiceDb")!, name: "deliveryservice-db");
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -48,5 +52,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.MapHealthChecks("/health");
 
 app.Run();
