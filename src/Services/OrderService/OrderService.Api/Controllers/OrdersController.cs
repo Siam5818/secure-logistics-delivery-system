@@ -55,6 +55,15 @@ public sealed class OrdersController : ControllerBase
         await _payOrder.HandleAsync(id, cancellationToken);
         return NoContent();
     }
+
+    [Authorize(Roles = "Admin")]
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> Delete(Guid id, CancellationToken cancellationToken)
+    {
+        // Suppression non implémentée dans ce MVP — endpoint créé uniquement
+        // pour démontrer le contrôle RBAC (réservé aux administrateurs)
+        return NoContent();
+    }
 }
 
 public sealed record AddOrderLineDto(string ProductName, int Quantity, decimal UnitPrice, string Currency);
