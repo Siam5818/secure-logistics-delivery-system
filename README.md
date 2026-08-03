@@ -158,3 +158,14 @@ Returns `Healthy` (200) when the database is reachable, `Unhealthy`
 `Customer`). `DELETE /api/Orders/{id}` is restricted to `Admin` role
 (demo endpoint — deletion logic not implemented, illustrates the RBAC
 mechanism only).
+
+## Tech Stack
+
+- **Backend**: ASP.NET Core 10, C#, Onion Architecture, DDD
+- **Persistence**: PostgreSQL (database-per-service), Entity Framework Core
+- **Messaging**: RabbitMQ, MassTransit
+- **Gateway**: YARP
+- **Auth**: JWT Bearer + RBAC (Keycloak attempted, see ADR-002)
+- **Frontend**: React, TypeScript, Vite
+- **DevOps**: Docker Compose, GitHub Actions CI
+- **Testing**: xUnit
