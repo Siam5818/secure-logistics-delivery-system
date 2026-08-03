@@ -141,3 +141,13 @@ build, and tests on every Pull Request targeting `develop` or `main`.
 development due to a GitHub Actions billing issue unrelated to this
 project (account-level payment processing). The workflow file is
 syntactically valid and ready to run once billing is resolved.
+
+## Health Checks
+
+- Order Service: `GET http://localhost:5114/health` — checks PostgreSQL
+  connectivity (orderservice-db)
+- Delivery Service: `GET http://localhost:5080/health` — checks
+  PostgreSQL connectivity (deliveryservice-db)
+
+Returns `Healthy` (200) when the database is reachable, `Unhealthy`
+(503) otherwise.
