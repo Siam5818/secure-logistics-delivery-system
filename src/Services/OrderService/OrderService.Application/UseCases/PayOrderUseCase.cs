@@ -1,5 +1,5 @@
 using MassTransit;
-using OrderService.Application.Events;
+using Contracts;
 using OrderService.Application.Interfaces;
 
 namespace OrderService.Application.UseCases;
